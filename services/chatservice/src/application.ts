@@ -10,7 +10,6 @@ import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
 import { ChatServiceComponent } from '@sourceloop/chat-service';
-import { jwtMiddleware } from './middleware/jwt';
 
 export {ApplicationConfig};
 
@@ -19,8 +18,6 @@ export class ChatserviceApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
-
-    this.middleware(jwtMiddleware);
 
     // Set up the custom sequence
     this.sequence(MySequence);
