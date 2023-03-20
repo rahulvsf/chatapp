@@ -1,13 +1,13 @@
 import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class User extends Entity {
+export class AppUser extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     id: true,
     generated: false,
   })
-  id?: number;
+  id?: string;
 
   @property({
     type: 'string',
@@ -28,13 +28,13 @@ export class User extends Entity {
   role: string;
 
 
-  constructor(data?: Partial<User>) {
+  constructor(data?: Partial<AppUser>) {
     super(data);
   }
 }
 
-export interface UserRelations {
+export interface AppUserRelations {
   // describe navigational properties here
 }
 
-export type UserWithRelations = User & UserRelations;
+export type AppUserWithRelations = AppUser & AppUserRelations;

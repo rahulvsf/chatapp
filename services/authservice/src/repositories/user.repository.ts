@@ -6,23 +6,23 @@ import {
   juggler,
 } from '@loopback/repository';
 import {AuthDbSourceName} from '@sourceloop/authentication-service';
-import {User, UserRelations} from '../models';
+import {AppUser, AppUserRelations} from '../models';
 
 export class UserRepository extends DefaultCrudRepository<
-  User,
-  typeof User.prototype.id,
-  UserRelations
+  AppUser,
+  typeof AppUser.prototype.id,
+  AppUserRelations
 > {
   constructor(
     @inject(`datasources.${AuthDbSourceName}`) dataSource: juggler.DataSource,
   ) {
-    super(User, dataSource);
+    super(AppUser, dataSource);
   }
 
   async create(
-    entity: DataObject<User>,
+    entity: DataObject<AppUser>,
     options?: AnyObject | undefined,
-  ): Promise<User> {
+  ): Promise<AppUser> {
     return super.create(entity, options);
   }
 }
