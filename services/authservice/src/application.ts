@@ -9,7 +9,11 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {AuthAppSequence} from './sequence';
-import {AuthenticationServiceComponent} from '@sourceloop/authentication-service';
+import {
+  AuthenticationServiceComponent,
+  SignUpBindings,
+} from '@sourceloop/authentication-service';
+import {LocalUserProvider} from './providers/local-user.provider';
 
 export {ApplicationConfig};
 
@@ -18,7 +22,6 @@ export class AuthserviceApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
-    
 
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
@@ -29,7 +32,10 @@ export class AuthserviceApplication extends BootMixin(
     });
     this.component(RestExplorerComponent);
     this.component(AuthenticationServiceComponent);
-    
+    this.bind(SignUpBindings.SIGNUP_HANDLER_PROVIDER).toProvider(
+      LocalUserProvider,
+    );
+
     // Set up the custom sequence
     this.sequence(AuthAppSequence);
 

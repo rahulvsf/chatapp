@@ -25,7 +25,25 @@ export class AppUser extends Entity {
     type: 'string',
     required: true,
   })
-  role: string;
+  email: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  username: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  password: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  role?: string;
 
 
   constructor(data?: Partial<AppUser>) {
