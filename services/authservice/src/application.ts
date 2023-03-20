@@ -8,8 +8,8 @@ import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {MySequence} from './sequence';
-import { AuthenticationServiceComponent } from '@sourceloop/authentication-service';
+import {AuthAppSequence} from './sequence';
+import {AuthenticationServiceComponent} from '@sourceloop/authentication-service';
 
 export {ApplicationConfig};
 
@@ -18,6 +18,7 @@ export class AuthserviceApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
+    
 
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
@@ -28,8 +29,9 @@ export class AuthserviceApplication extends BootMixin(
     });
     this.component(RestExplorerComponent);
     this.component(AuthenticationServiceComponent);
+    
     // Set up the custom sequence
-    this.sequence(MySequence);
+    this.sequence(AuthAppSequence);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
