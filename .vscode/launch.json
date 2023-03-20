@@ -7,14 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Auth Service",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/services/authservice/dist/index.js",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
         }
     ]
 }

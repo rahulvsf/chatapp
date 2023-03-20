@@ -19,8 +19,6 @@ export class AuthserviceApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
     super(options);
 
-    
-
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
 
