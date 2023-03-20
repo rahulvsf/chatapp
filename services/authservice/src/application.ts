@@ -23,6 +23,9 @@ export class AuthserviceApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
     super(options);
 
+    // Set up the custom sequence
+    this.sequence(AuthAppSequence);
+
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
 
@@ -35,9 +38,6 @@ export class AuthserviceApplication extends BootMixin(
     this.bind(SignUpBindings.SIGNUP_HANDLER_PROVIDER).toProvider(
       LocalUserProvider,
     );
-
-    // Set up the custom sequence
-    this.sequence(AuthAppSequence);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
