@@ -58,6 +58,7 @@
     "@sourceloop/authentication-service": "^9.1.1",
     "bcrypt": "^5.1.0",
     "loopback-connector-postgresql": "^5.5.2",
+    "loopback4-authorization": "^5.1.2",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
